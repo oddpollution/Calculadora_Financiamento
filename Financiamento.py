@@ -131,7 +131,7 @@ class financiamento:
                 data=pd.DataFrame(data)
                 tabela_price = pd.concat([tabela_price,data])
             elif calculo == "SAC":
-                data=[{'Periodo': i,'Montante': total,'Parcela': total/meses,'Amortizacao': total/meses + juros_mes * tabela_price.iloc[i-1][5],'Juros': juros_mes * tabela_price.iloc[i-1][5],'Saldo_devedor': tabela_price.iloc[i-1][5] + juros_mes * tabela_price.iloc[i-1][5] - total/meses + juros_mes * tabela_price.iloc[i-1][5]}]
+                data=[{'Periodo': i,'Montante': total,'Parcela': total/meses,'Amortizacao': total/meses + juros_mes * tabela_price.iloc[i-1][5],'Juros': juros_mes * tabela_price.iloc[i-1][5],'Saldo_devedor': tabela_price.iloc[i-1][5] + juros_mes * tabela_price.iloc[i-1][5] - total/meses - juros_mes * tabela_price.iloc[i-1][5]}]
                 data=pd.DataFrame(data)
                 tabela_price = pd.concat([tabela_price,data])        
         
