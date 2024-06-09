@@ -6,6 +6,7 @@ from openpyxl import *
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 import requests
 from bs4 import BeautifulSoup
 
@@ -21,6 +22,8 @@ base = pd.read_json(url)
 
 base1 = pd.json_normalize(base['value'])
 baseFinal = pd.DataFrame(base1)
+
+baseFinal = baseFinal.loc[baseFinal["TaxaJurosAoAno"] != 0]
 #teste = baseFinal.loc[baseFinal["InstituicaoFinanceira"] == "CAIXA ECONOMICA FEDERAL"]
 
 #### FORM ####
@@ -76,11 +79,16 @@ class financiamento:
                         # create the button
         btCalcularPagamento = Button(root, text = "Calcular",
                                           command = self.CalcularPagamento).pack()
+        btCalcularPagamento = Button(root, text = "Download",
+                                          command = self.downloadbt).pack()
         root.mainloop()
 
 #### CALCULOS ####
 
     def CalcularPagamento(self):
+        
+        global info
+        global tabela_price
 
         calculo = self.v.get()
         banco = self.x.get()
@@ -141,8 +149,10 @@ class financiamento:
         self.ParcelasTotal.set('R${:,.2f}'.format(parcela, '10.2f'))
         self.FinanciamentoTotal.set('R${:,.2f}'.format(Total_Financiamento, '10.2f'))
 
+    def downloadbt(self):
         with pd.ExcelWriter('output.xlsx') as writer:  
             info.to_excel(writer, sheet_name='Dados')
             tabela_price.to_excel(writer, sheet_name='Tabela')
+        messagebox.showinfo(title = "Download", message = "A lâmina foi baixada no diretório do Programa")
 
 financiamento()
