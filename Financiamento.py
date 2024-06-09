@@ -133,7 +133,7 @@ class financiamento:
                                              "Juros", 
                                              "Saldo_devedor"])
 
-        for i in range(1,(meses+1)):
+        for i in range(1,(meses)):
             if calculo == "PRICE":
                 data=[{'Periodo': i,'Montante': total,'Parcela': total/meses,'Amortizacao': parcela,'Juros': juros_mes * tabela_price.iloc[i-1][5],'Saldo_devedor': tabela_price.iloc[i-1][5] + juros_mes * tabela_price.iloc[i-1][5] - parcela}]
                 data=pd.DataFrame(data)
