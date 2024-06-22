@@ -62,7 +62,7 @@ class financiamento:
         Radiobutton(root, text='PRICE', variable=self.v, value="PRICE", tristatevalue=0).pack(anchor=W,pady = 5, padx = 10)
         Label(root, text = "Banco").pack(anchor=W, pady = 5, padx = 10)
         ttk.Combobox(root,values = BankList, textvariable=self.x, width = 300).pack(anchor=W,pady = 5, padx = 10)
-        Label(root, text = "Modelo de Cáclulo").pack(anchor=W, pady = 5, padx = 10)
+        Label(root, text = "Modelo de Cálculo").pack(anchor=W, pady = 5, padx = 10)
         ttk.Combobox(root,values = MethodList, textvariable=self.y, width = 300).pack(anchor=W,pady = 5, padx = 10)
         Label(root, text = "Taxa de Juros (formato 0.00)").pack(anchor=W, pady = 5, padx = 10)
         Entry(root, textvariable = self.z).pack(anchor=W, pady = 5, padx = 10)
