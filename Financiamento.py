@@ -153,6 +153,7 @@ class financiamento:
         with pd.ExcelWriter('output.xlsx') as writer:  
             info.to_excel(writer, sheet_name='Dados')
             tabela_price.to_excel(writer, sheet_name='Tabela')
+            baseFinal.to_excel(writer, sheet_name='Tabela')
         messagebox.showinfo(title = "Download", message = "A lâmina foi baixada no diretório do Programa")
 
 financiamento()
